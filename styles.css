@@ -110,9 +110,9 @@ h1, h2, h3, p { margin: 0; }
 .project--seven { grid-column: 6 / 13; }
 .project--lower { margin-top: clamp(5rem, 11vw, 10rem); }
 .project__media { position: relative; display: block; overflow: hidden; background: var(--charcoal); }
-.project__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease-out); }
-.project__media::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.08); transition: background .4s; }
-.project__media:hover img, .project:focus-within .project__media img { transform: scale(1.018); }
+.project__media img, .project__media video { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease-out); display: block; }
+.project__media::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.08); transition: background .4s; pointer-events: none; }
+.project__media:hover img, .project__media:hover video, .project:focus-within .project__media img, .project:focus-within .project__media video { transform: scale(1.018); }
 .project__media:hover::after { background: rgba(0,0,0,.25); }
 .ratio-wide { aspect-ratio: 16 / 9; }
 .ratio-cinema { aspect-ratio: 3 / 2; }
@@ -447,6 +447,38 @@ i[class*="ph-"] {
 
 .reveal-word__base .brand-period {
   color: inherit;
+}
+
+/* ============================================================
+   SUBTLE SECTION HEADING HIGHLIGHT BOX
+   ============================================================ */
+
+.heading-highlight {
+  display: inline-block;
+  position: relative;
+  background-color: var(--envizon-yellow);
+  color: #0a0a0a;
+  padding: 0.02em 0.16em 0.05em;
+  margin: 0 0.04em;
+  vertical-align: top;
+  line-height: 1;
+}
+
+.heading-highlight .reveal-word {
+  vertical-align: top;
+}
+
+.heading-highlight .reveal-word__base {
+  color: rgba(10, 10, 10, 0.35) !important;
+}
+
+.heading-highlight .reveal-word__fill {
+  color: #0a0a0a !important;
+}
+
+.heading-highlight .reveal-word__fill .brand-period,
+.heading-highlight .reveal-word__base .brand-period {
+  color: #0a0a0a !important;
 }
 
 /* Respect prefers-reduced-motion */

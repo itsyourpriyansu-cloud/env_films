@@ -446,6 +446,49 @@
   updateTime();
   window.setInterval(updateTime, 30000);
 
+  const initProjectVideoHover = () => {
+    const projectCards = document.querySelectorAll('.project');
+    projectCards.forEach((card) => {
+      const video = card.querySelector('.project__video');
+      if (!video) return;
+
+      let playPromise = null;
+
+      const startPlayback = () => {
+        if (prefersReducedMotion) return;
+        video.muted = true;
+        playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
+      };
+
+      const stopPlayback = () => {
+        if (playPromise !== undefined && playPromise !== null) {
+          playPromise
+            .then(() => {
+              video.pause();
+              video.currentTime = 0;
+            })
+            .catch(() => {
+              video.pause();
+              video.currentTime = 0;
+            });
+        } else {
+          video.pause();
+          video.currentTime = 0;
+        }
+      };
+
+      card.addEventListener('mouseenter', startPlayback);
+      card.addEventListener('mouseleave', stopPlayback);
+      card.addEventListener('focusin', startPlayback);
+      card.addEventListener('focusout', stopPlayback);
+    });
+  };
+
+  initProjectVideoHover();
+
   document.querySelector('[data-back-top]').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   });
