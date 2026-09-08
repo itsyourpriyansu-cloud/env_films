@@ -48,9 +48,9 @@ h1, h2, h3, p { margin: 0; }
 .site-header.is-solid { color: var(--black); background: rgba(250,250,248,.97); border-bottom: var(--border-light); }
 .site-header.is-dark { color: var(--white); background: rgba(10,10,10,.95); border-bottom: var(--border-dark); }
 .header__logo-marker { width: 5.1rem; height: 2.05rem; justify-self: start; visibility: hidden; }
-.hero-logo { position: fixed; top: clamp(1.25rem, 2.2vw, 1.75rem); left: clamp(1.5rem, 2vw, 2rem); z-index: 101; display: block; color: var(--white); font-size: clamp(6.2rem, 11vw, 13.2rem); font-weight: 500; line-height: .69; letter-spacing: -.085em; text-transform: uppercase; transform-origin: left top; clip-path: inset(0 0 0 0); transition: clip-path .85s var(--ease-out) .08s, opacity .2s; }
-.hero-logo__line { display: block; overflow: hidden; padding-right: .08em; }
-.hero-logo__line:last-child { width: max-content; margin-left: .78em; }
+.hero-logo { position: fixed; top: clamp(1.25rem, 2.2vw, 1.75rem); left: clamp(1.5rem, 2vw, 2rem); z-index: 101; display: block; color: var(--white); font-size: clamp(6.2rem, 11vw, 13.2rem); font-weight: 500; line-height: .74; letter-spacing: -.085em; text-transform: uppercase; transform-origin: left top; clip-path: inset(0 0 0 0); transition: clip-path .85s var(--ease-out) .08s, opacity .2s; }
+.hero-logo__line { display: block; overflow: visible; padding: .04em .08em .04em 0; }
+.hero-logo__line:last-child { width: max-content; margin-left: 0; }
 .hero-logo__line > span { display: block; }
 .hero-logo.is-on-light { color: var(--black); }
 .desktop-nav { display: flex; justify-content: flex-end; gap: clamp(1.65rem, 2.15vw, 2.5rem); }
@@ -311,7 +311,7 @@ h1, h2, h3, p { margin: 0; }
   :root { --pad: 1.25rem; --section-space: 5.5rem; }
   .site-header { height: 4.5rem; padding-inline: var(--pad); }
   .header__logo-marker { width: 4.1rem; height: 1.65rem; }
-  .hero-logo { top: max(1.1rem, env(safe-area-inset-top)); left: 1.25rem; font-size: clamp(4.7rem, 19vw, 6.4rem); line-height: .7; }
+  .hero-logo { top: max(1.35rem, env(safe-area-inset-top)); left: 1.25rem; font-size: clamp(4.7rem, 19vw, 6.4rem); line-height: .74; }
   .mobile-menu { padding-top: 6.5rem; }
   .mobile-menu__foot { flex-direction: column; }
   .mobile-menu__foot > div:last-child { text-align: left; }
