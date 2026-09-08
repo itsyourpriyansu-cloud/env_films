@@ -7,23 +7,31 @@
   <meta name="theme-color" content="#0a0a0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
   <link rel="stylesheet" href="styles.css">
+  <script>if (!location.hash && 'scrollRestoration' in history) history.scrollRestoration = 'manual'; document.documentElement.classList.add('hero-pending'); setTimeout(() => document.documentElement.classList.remove('hero-pending'), 1500);</script>
   <title>Envizon Films — Film production, Hyderabad</title>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <a class="hero-logo" href="#top" aria-label="Envizon Films home" data-hero-logo>
+    <span class="hero-logo__line"><span>ENVIZON</span></span>
+    <span class="hero-logo__line"><span>FILMS</span></span>
+  </a>
+
   <header class="site-header" data-header>
-    <a class="wordmark" href="#top" aria-label="Envizon Films home">ENVIZON <span>FILMS</span></a>
+    <span class="header__logo-marker" aria-hidden="true" data-logo-destination></span>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#work">Work</a>
       <a href="#directors">Directors</a>
       <a href="#services">Services</a>
       <a href="#studio">Studio</a>
       <a href="#journal">Journal</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a class="header-cta" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
       <span>Menu</span><i aria-hidden="true"></i>
     </button>
@@ -46,23 +54,23 @@
 
   <main id="main">
     <section class="hero dark-zone" id="top" aria-labelledby="hero-title">
-      <img class="hero__media" src="assets/images/hero.jpg" width="2200" height="1487" alt="Film slate held against an open desert landscape" fetchpriority="high">
+      <video class="hero__media" autoplay loop muted playsinline preload="metadata" poster="assets/images/hero.jpg" aria-hidden="true">
+        <source src="assets/videos/kode-landing.mp4" type="video/mp4">
+      </video>
       <div class="hero__shade"></div>
       <div class="hero__content">
-        <p class="hero__kicker mono">Independent production studio / Hyderabad</p>
         <h1 id="hero-title">
-          <span class="line"><span>We turn</span></span>
-          <span class="line"><span>ideas into</span></span>
-          <span class="line"><span>films.</span></span>
+          <span class="line"><span>We turn ideas</span></span>
+          <span class="line"><span>into films.</span></span>
         </h1>
         <div class="hero__actions">
-          <a class="text-link text-link--light" href="#work">View work <span aria-hidden="true">→</span></a>
-          <button class="showreel-link" type="button" data-showreel>Play showreel <span class="mono">01:12</span></button>
+          <button class="showreel-link" type="button" data-showreel>Play showreel <span class="mono">01:12</span><i class="ph-light ph-arrow-right" aria-hidden="true"></i></button>
+          <a class="hero__work-link" href="#work">Selected work <span aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span></a>
         </div>
       </div>
       <div class="hero__meta mono">
-        <span>Envizon Films</span><span>Hyderabad / India</span><span>2026</span>
-        <a href="#work">Scroll <span aria-hidden="true">↓</span></a>
+        <span>Envizon Films / Production</span><span>Hyderabad / India</span><span>2026</span>
+        <a href="#work">Scroll <span aria-hidden="true"><i class="ph-light ph-arrow-down"></i></span></a>
       </div>
     </section>
 
@@ -76,7 +84,7 @@
         <article class="project project--wide reveal" tabindex="0">
           <a class="project__media ratio-wide" href="#case-study" aria-label="View the Still Moving project">
             <img src="assets/images/work-05.jpg" width="1600" height="2400" alt="Road cutting through a red-rock desert" loading="lazy">
-            <span class="project__index mono">01 / 06</span><span class="project__view">View film →</span>
+            <span class="project__index mono">01 / 06</span><span class="project__view">View film <i class="ph-light ph-arrow-right"></i></span>
           </a>
           <div class="project__info"><h3>Still Moving</h3><p class="mono">Niyojak / Brand film / 2026</p><p class="mono">Director / A. Varma</p></div>
         </article>
@@ -84,7 +92,7 @@
         <article class="project project--eight reveal" tabindex="0">
           <a class="project__media ratio-cinema" href="#case-study" aria-label="View the After Dark project">
             <img src="assets/images/work-03.jpg" width="1600" height="1067" alt="Empty city street lit in electric blue and magenta at night" loading="lazy">
-            <span class="project__index mono">02 / 06</span><span class="project__view">View film →</span>
+            <span class="project__index mono">02 / 06</span><span class="project__view">View film <i class="ph-light ph-arrow-right"></i></span>
           </a>
           <div class="project__info"><h3>After Dark</h3><p class="mono">Ather / Commercial / 2026</p><p class="mono">Director / Mira Shah</p></div>
         </article>
@@ -92,7 +100,7 @@
         <article class="project project--four project--lower reveal" tabindex="0">
           <a class="project__media ratio-portrait" href="#case-study" aria-label="View the Old Worlds project">
             <img src="assets/images/work-02.jpg" width="1600" height="2421" alt="Stone castle emerging through morning mist" loading="lazy">
-            <span class="project__index mono">03 / 06</span><span class="project__view">View film →</span>
+            <span class="project__index mono">03 / 06</span><span class="project__view">View film <i class="ph-light ph-arrow-right"></i></span>
           </a>
           <div class="project__info"><h3>Old Worlds</h3><p class="mono">Oberoi / Hospitality / 2025</p><p class="mono">Director / Dev Sen</p></div>
         </article>
@@ -100,7 +108,7 @@
         <article class="project project--five reveal" tabindex="0">
           <a class="project__media ratio-four-three" href="#case-study" aria-label="View the Field Notes project">
             <img src="assets/images/work-04.jpg" width="1600" height="1067" alt="Photographer working high above a cloud-filled valley" loading="lazy">
-            <span class="project__index mono">04 / 06</span><span class="project__view">View film →</span>
+            <span class="project__index mono">04 / 06</span><span class="project__view">View film <i class="ph-light ph-arrow-right"></i></span>
           </a>
           <div class="project__info"><h3>Field Notes</h3><p class="mono">Wildcraft / Documentary / 2025</p><p class="mono">Director / Rohan Mehta</p></div>
         </article>
@@ -108,18 +116,39 @@
         <article class="project project--seven project--lower reveal" tabindex="0">
           <a class="project__media ratio-wide" href="#case-study" aria-label="View the New Forms project">
             <img src="assets/images/work-01.jpg" width="1800" height="1200" alt="Angular contemporary building against a pale sky" loading="lazy">
-            <span class="project__index mono">05 / 06</span><span class="project__view">View film →</span>
+            <span class="project__index mono">05 / 06</span><span class="project__view">View film <i class="ph-light ph-arrow-right"></i></span>
           </a>
           <div class="project__info"><h3>New Forms</h3><p class="mono">Sattva / Corporate film / 2025</p><p class="mono">Director / Ira Menon</p></div>
         </article>
       </div>
 
-      <div class="work-footer reveal"><p>Commercials, brand films, documentaries and moving images for every screen.</p><a class="text-link" href="#more-work">All work <span aria-hidden="true">→</span></a></div>
+      <div class="work-footer reveal"><p>Commercials, brand films, documentaries and moving images for every screen.</p><a class="text-link" href="#more-work">All work <span aria-hidden="true"><i class="ph-light ph-arrow-right"></i></span></a></div>
     </section>
 
     <section class="section manifesto" id="studio" aria-labelledby="manifesto-title">
       <div class="section-label mono reveal"><span>02</span><span>Point of view</span></div>
-      <h2 id="manifesto-title" class="manifesto__title reveal">A film should do more<br>than look good.<br><em>It should make<br>something happen.</em></h2>
+      <h2 id="manifesto-title" class="manifesto__title">
+        <span class="manifesto__thought manifesto__thought--primary">
+          <span class="manifesto__line-mask">
+            <span class="manifesto__line">A film should do more</span>
+          </span>
+          <span class="manifesto__line-mask">
+            <span class="manifesto__line">than look good.</span>
+          </span>
+        </span>
+        <span class="manifesto__thought manifesto__thought--payoff">
+          <span class="manifesto__line-mask">
+            <span class="manifesto__line">
+              <span class="manifesto__group manifesto__group--1">It should</span> <span class="manifesto__group manifesto__group--2">make</span>
+            </span>
+          </span>
+          <span class="manifesto__line-mask">
+            <span class="manifesto__line manifesto__payoff-target">
+              <span class="manifesto__group manifesto__group--3">something happen.</span>
+            </span>
+          </span>
+        </span>
+      </h2>
       <div class="manifesto__note reveal"><span class="mono">Our approach / 2026</span><p>We begin with the feeling a story should leave behind. Then we assemble the right people, details and decisions to make that feeling real.</p></div>
       <div class="contact-sheet reveal" aria-label="Behind the scenes contact sheet">
         <figure><img src="assets/images/bts.jpg" width="1800" height="2250" alt="Crew adjusting studio lights on a dark set" loading="lazy"><figcaption class="mono">LIGHT TEST / FRAME 018</figcaption></figure>
@@ -132,7 +161,7 @@
       <img src="assets/images/work-03.jpg" width="1600" height="1067" alt="Neon-lit city street at night" loading="lazy">
       <div class="featured-film__shade"></div>
       <div class="featured-film__top mono"><span>Featured film / 024</span><span>Commercial / 00:45</span></div>
-      <div class="featured-film__content reveal"><p class="mono">Ather / 2026</p><h2 id="featured-title">Night<br>belongs to us.</h2><a class="text-link text-link--light" href="#case-study">Watch film <span aria-hidden="true">↗</span></a></div>
+      <div class="featured-film__content reveal"><p class="mono">Ather / 2026</p><h2 id="featured-title">Night<br>belongs to us.</h2><a class="text-link text-link--light" href="#case-study">Watch film <span aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span></a></div>
     </section>
 
     <section class="section services" id="services" aria-labelledby="services-title">
@@ -142,12 +171,12 @@
       </div>
       <div class="services__layout">
         <div class="services__rows">
-          <button class="service-row is-active" type="button" data-service-image="assets/images/work-03.jpg"><span class="mono">01</span><strong>Commercials</strong><small>Films built for campaigns, launches and screens of every size.</small><i aria-hidden="true">→</i></button>
-          <button class="service-row" type="button" data-service-image="assets/images/work-05.jpg"><span class="mono">02</span><strong>Brand films</strong><small>Purpose, people and point of view translated into a lasting story.</small><i aria-hidden="true">→</i></button>
-          <button class="service-row" type="button" data-service-image="assets/images/work-01.jpg"><span class="mono">03</span><strong>Corporate films</strong><small>Clear, human filmmaking for organisations with something real to say.</small><i aria-hidden="true">→</i></button>
-          <button class="service-row" type="button" data-service-image="assets/images/work-04.jpg"><span class="mono">04</span><strong>Digital content</strong><small>Flexible film systems made to live across channels and formats.</small><i aria-hidden="true">→</i></button>
-          <button class="service-row" type="button" data-service-image="assets/images/work-02.jpg"><span class="mono">05</span><strong>Motion / Animation</strong><small>Design and movement shaped with the same care as live action.</small><i aria-hidden="true">→</i></button>
-          <button class="service-row" type="button" data-service-image="assets/images/bts.jpg"><span class="mono">06</span><strong>Post-production</strong><small>Edit, colour, sound and finish brought together under one roof.</small><i aria-hidden="true">→</i></button>
+          <button class="service-row is-active" type="button" data-service-image="assets/images/work-03.jpg"><span class="mono">01</span><strong>Commercials</strong><small>Films built for campaigns, launches and screens of every size.</small><i class="ph-light ph-arrow-right" aria-hidden="true"></i></button>
+          <button class="service-row" type="button" data-service-image="assets/images/work-05.jpg"><span class="mono">02</span><strong>Brand films</strong><small>Purpose, people and point of view translated into a lasting story.</small><i class="ph-light ph-arrow-right" aria-hidden="true"></i></button>
+          <button class="service-row" type="button" data-service-image="assets/images/work-01.jpg"><span class="mono">03</span><strong>Corporate films</strong><small>Clear, human filmmaking for organisations with something real to say.</small><i class="ph-light ph-arrow-right" aria-hidden="true"></i></button>
+          <button class="service-row" type="button" data-service-image="assets/images/work-04.jpg"><span class="mono">04</span><strong>Digital content</strong><small>Flexible film systems made to live across channels and formats.</small><i class="ph-light ph-arrow-right" aria-hidden="true"></i></button>
+          <button class="service-row" type="button" data-service-image="assets/images/work-02.jpg"><span class="mono">05</span><strong>Motion / Animation</strong><small>Design and movement shaped with the same care as live action.</small><i class="ph-light ph-arrow-right" aria-hidden="true"></i></button>
+          <button class="service-row" type="button" data-service-image="assets/images/bts.jpg"><span class="mono">06</span><strong>Post-production</strong><small>Edit, colour, sound and finish brought together under one roof.</small><i class="ph-light ph-arrow-right" aria-hidden="true"></i></button>
         </div>
         <figure class="service-preview" aria-hidden="true"><img src="assets/images/work-03.jpg" alt="" data-service-preview></figure>
       </div>
@@ -164,7 +193,7 @@
           <div><dt class="mono">The idea</dt><dd>One road. One traveller. A sequence of small decisions that gradually opens into a wider world.</dd></div>
           <div><dt class="mono">Deliverables</dt><dd>Hero film / 45 sec cut / 6 social edits / stills library</dd></div>
         </dl>
-        <a class="text-link text-link--light" href="#work">View project <span aria-hidden="true">→</span></a>
+        <a class="text-link text-link--light" href="#work">View project <span aria-hidden="true"><i class="ph-light ph-arrow-right"></i></span></a>
       </div>
     </section>
 
@@ -183,10 +212,10 @@
     <section class="section directors" id="directors" aria-labelledby="directors-title">
       <div class="directors__head reveal"><div class="section-label mono"><span>06</span><span>Creative collective</span></div><h2 id="directors-title">Distinct voices.<br>One standard.</h2></div>
       <div class="director-grid">
-        <article class="director reveal"><a href="#contact"><figure><img src="assets/images/director-01.jpg" width="1200" height="1800" alt="Portrait of director Arjun Varma" loading="lazy"><span>View reel →</span></figure><h3>Arjun Varma</h3><p class="mono">Commercial / Automotive / Human stories</p></a></article>
-        <article class="director director--offset reveal"><a href="#contact"><figure><img src="assets/images/director-02.jpg" width="1200" height="1800" alt="Portrait of director Mira Shah" loading="lazy"><span>View reel →</span></figure><h3>Mira Shah</h3><p class="mono">Fashion / Food / Performance</p></a></article>
+        <article class="director reveal"><a href="#contact"><figure><img src="assets/images/director-01.jpg" width="1200" height="1800" alt="Portrait of director Arjun Varma" loading="lazy"><span>View reel <i class="ph-light ph-arrow-right"></i></span></figure><h3>Arjun Varma</h3><p class="mono">Commercial / Automotive / Human stories</p></a></article>
+        <article class="director director--offset reveal"><a href="#contact"><figure><img src="assets/images/director-02.jpg" width="1200" height="1800" alt="Portrait of director Mira Shah" loading="lazy"><span>View reel <i class="ph-light ph-arrow-right"></i></span></figure><h3>Mira Shah</h3><p class="mono">Fashion / Food / Performance</p></a></article>
       </div>
-      <a class="text-link directors__link" href="#contact">Meet the collective <span aria-hidden="true">→</span></a>
+      <a class="text-link directors__link" href="#contact">Meet the collective <span aria-hidden="true"><i class="ph-light ph-arrow-right"></i></span></a>
     </section>
 
     <section class="proof dark-zone" aria-labelledby="proof-title">
@@ -208,7 +237,7 @@
     <section class="section journal dark-zone" id="journal" aria-labelledby="journal-title">
       <div class="journal__head reveal"><div class="section-label mono"><span>09</span><span>Journal</span></div><h2 id="journal-title">Notes from<br>behind the frame.</h2></div>
       <div class="journal-grid">
-        <article class="journal-card journal-card--feature reveal"><a href="#contact"><img src="assets/images/bts.jpg" width="1800" height="2250" alt="Crew members working with studio lighting" loading="lazy"><p class="mono">Craft / 06.08.2026</p><h3>What the light is really doing</h3><span class="text-link text-link--light">Read story <i aria-hidden="true">→</i></span></a></article>
+        <article class="journal-card journal-card--feature reveal"><a href="#contact"><img src="assets/images/bts.jpg" width="1800" height="2250" alt="Crew members working with studio lighting" loading="lazy"><p class="mono">Craft / 06.08.2026</p><h3>What the light is really doing</h3><span class="text-link text-link--light">Read story <span aria-hidden="true"><i class="ph-light ph-arrow-right"></i></span></span></a></article>
         <article class="journal-card reveal"><a href="#contact"><img src="assets/images/work-04.jpg" width="1600" height="1067" alt="Location photographer above a mountain valley" loading="lazy"><p class="mono">Field notes / 24.07.2026</p><h3>Scouting for atmosphere, not just a location</h3></a></article>
         <article class="journal-card reveal"><a href="#contact"><img src="assets/images/hero.jpg" width="2200" height="1487" alt="Close-up of a film slate on location" loading="lazy"><p class="mono">Production / 12.06.2026</p><h3>The ten decisions before “action”</h3></a></article>
       </div>
@@ -217,7 +246,7 @@
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="contact__meta mono reveal"><span>Have a film in mind?</span><span>Hyderabad / Available worldwide</span></div>
       <h2 id="contact-title" class="reveal">Let's make something<br><em>worth watching.</em></h2>
-      <a class="contact__link reveal" href="mailto:hello@envizonfilms.com">hello@envizonfilms.com <span aria-hidden="true">↗</span></a>
+      <a class="contact__link reveal" href="mailto:hello@envizonfilms.com">hello@envizonfilms.com <span aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span></a>
     </section>
   </main>
 
@@ -226,17 +255,25 @@
     <div class="footer__grid">
       <div class="footer__nav"><a href="#work">Work</a><a href="#directors">Directors</a><a href="#services">Services</a><a href="#studio">Studio</a><a href="#journal">Journal</a></div>
       <div class="footer__social"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a></div>
-      <address>Hyderabad<br>India<br><a href="mailto:hello@envizonfilms.com">Email us ↗</a></address>
-      <a class="footer__cta" href="mailto:hello@envizonfilms.com">Start a project <span aria-hidden="true">↗</span></a>
+      <address>Hyderabad<br>India<br><a href="mailto:hello@envizonfilms.com">Email us <i class="ph-light ph-arrow-up-right"></i></a></address>
+      <a class="footer__cta" href="mailto:hello@envizonfilms.com">Start a project <span aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span></a>
     </div>
-    <div class="footer__bottom mono"><span>©2026 Envizon Films</span><span>Privacy / Terms</span><button type="button" data-back-top>Back to top ↑</button></div>
+    <div class="footer__bottom mono"><span>©2026 Envizon Films</span><span>Privacy / Terms</span><button type="button" data-back-top>Back to top <i class="ph-light ph-arrow-up"></i></button></div>
   </footer>
 
   <dialog class="showreel" data-showreel-dialog aria-labelledby="showreel-title">
     <button class="showreel__close" type="button" aria-label="Close showreel" data-showreel-close>Close ×</button>
-    <div class="showreel__frame"><img src="assets/images/hero.jpg" alt="Film slate on location"><div><p class="mono">SHOWREEL / 2026 / 01:12</p><h2 id="showreel-title">Your production reel goes here.</h2><p>Replace this placeholder with Envizon's final compressed showreel file.</p></div></div>
+    <div class="showreel__frame">
+      <h2 class="sr-only" id="showreel-title">Envizon Films 2026 showreel</h2>
+      <video controls muted playsinline preload="none" poster="assets/images/hero.jpg" data-reel-video aria-label="Envizon Films 2026 showreel">
+        <source src="assets/videos/kode-landing.mp4" type="video/mp4">
+      </video>
+      <p class="showreel__caption mono">Envizon Films / Showreel 2026 / 01:12</p>
+    </div>
   </dialog>
 
+  <script src="assets/js/gsap.min.js" defer></script>
+  <script src="assets/js/ScrollTrigger.min.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
