@@ -337,13 +337,27 @@
   }
 
   let darkZones = [];
+  let lastScrollY = window.scrollY;
+
   const updateHeader = () => {
-    const y = window.scrollY + 42;
+    const currentScrollY = window.scrollY;
+    const y = currentScrollY + 42;
     const inHero = y < hero.offsetTop + hero.offsetHeight;
     const currentDark = darkZones.some((zone) => y >= zone.top && y < zone.bottom);
     header.classList.toggle('is-dark', !inHero && currentDark);
     header.classList.toggle('is-solid', !inHero && !currentDark);
     heroLogo.classList.toggle('is-on-light', !inHero && !currentDark);
+
+    const menuOpen = document.body.classList.contains('menu-open');
+    if (menuOpen || currentScrollY <= 80) {
+      header.classList.remove('is-hidden');
+    } else if (currentScrollY > lastScrollY) {
+      header.classList.add('is-hidden');
+    } else if (currentScrollY < lastScrollY) {
+      header.classList.remove('is-hidden');
+    }
+
+    lastScrollY = currentScrollY;
   };
   const mapDarkZones = () => {
     darkZones = [...document.querySelectorAll('.dark-zone')].map((zone) => ({
@@ -373,16 +387,50 @@
   }
 
   const processItems = document.querySelectorAll('.process__list li');
-  if (processItems.length && 'IntersectionObserver' in window) {
-    const processObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          processItems.forEach((li) => li.classList.remove('is-active'));
-          entry.target.classList.add('is-active');
-        }
+  if (processItems.length) {
+    if ('IntersectionObserver' in window) {
+      const processObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            processItems.forEach((li) => li.classList.remove('is-active'));
+            entry.target.classList.add('is-active');
+          }
+        });
+      }, { rootMargin: '-30% 0px -40% 0px', threshold: 0.2 });
+      processItems.forEach((item) => processObserver.observe(item));
+    }
+
+    processItems.forEach((item) => {
+      const card = item.querySelector('.process__card');
+      if (!card) return;
+
+      const activateHover = () => {
+        processItems.forEach((li) => li.classList.remove('is-hovered'));
+        item.classList.add('is-hovered');
+      };
+
+      const deactivateHover = () => {
+        item.classList.remove('is-hovered');
+        item.style.setProperty('--card-x', '0px');
+        item.style.setProperty('--card-y', '0px');
+      };
+
+      item.addEventListener('mouseenter', activateHover);
+      item.addEventListener('focusin', activateHover);
+      item.addEventListener('mouseleave', deactivateHover);
+      item.addEventListener('focusout', deactivateHover);
+
+      item.addEventListener('mousemove', (e) => {
+        if (prefersReducedMotion) return;
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const dx = Math.max(-20, Math.min(20, x * 0.12));
+        const dy = Math.max(-12, Math.min(12, y * 0.12));
+        item.style.setProperty('--card-x', `${dx}px`);
+        item.style.setProperty('--card-y', `${dy}px`);
       });
-    }, { rootMargin: '-30% 0px -40% 0px', threshold: 0.2 });
-    processItems.forEach((item) => processObserver.observe(item));
+    });
   }
 
   const navLinks = document.querySelectorAll('.desktop-nav a');
@@ -487,9 +535,311 @@
     });
   };
 
-  initProjectVideoHover();
+  const initCustomButtons = () => {
+    const customButtons = document.querySelectorAll('.btn-custom');
+    customButtons.forEach((btn) => {
+      if (btn.querySelector('.btn-custom__text-visual')) return;
+
+      const textEl = btn.querySelector('.btn-custom__text');
+      if (!textEl) return;
+
+      const rawText = textEl.textContent.trim();
+      if (!rawText) return;
+
+      const boxEl = btn.querySelector('.btn-custom__box');
+      if (boxEl && !boxEl.querySelector('.btn-custom__corners')) {
+        const cornersSpan = document.createElement('span');
+        cornersSpan.className = 'btn-custom__corners';
+        cornersSpan.setAttribute('aria-hidden', 'true');
+        boxEl.prepend(cornersSpan);
+      }
+
+      const visualSpan = document.createElement('span');
+      visualSpan.className = 'btn-custom__text-visual';
+      visualSpan.setAttribute('aria-hidden', 'true');
+
+      let charCount = 0;
+      Array.from(rawText).forEach((char) => {
+        if (char === ' ') {
+          const space = document.createElement('span');
+          space.className = 'btn-custom__space';
+          space.innerHTML = '&nbsp;';
+          visualSpan.appendChild(space);
+        } else {
+          const charWrapper = document.createElement('span');
+          charWrapper.className = 'btn-custom__char';
+          charWrapper.style.setProperty('--char-index', charCount);
+
+          const primary = document.createElement('span');
+          primary.className = 'btn-custom__char-primary';
+          primary.textContent = char;
+
+          const secondary = document.createElement('span');
+          secondary.className = 'btn-custom__char-secondary';
+          secondary.textContent = char;
+
+          charWrapper.appendChild(primary);
+          charWrapper.appendChild(secondary);
+          visualSpan.appendChild(charWrapper);
+          charCount++;
+        }
+      });
+
+      textEl.innerHTML = '';
+      const srSpan = document.createElement('span');
+      srSpan.className = 'sr-only';
+      srSpan.textContent = rawText;
+      textEl.appendChild(srSpan);
+      textEl.appendChild(visualSpan);
+    });
+  };
+
+  const initClientProofSection = () => {
+    const proofSection = document.getElementById('proof');
+    if (!proofSection) return;
+
+    const clients = [
+      {
+        name: 'ATHER',
+        quote: '“Ather\'s night shoot was brutal, but Envizon captured raw energy like no one else.”',
+        author: 'Vikram Malhotra',
+        role: 'Lead Creative, Ather Energy',
+        video: 'assets/videos/8089116-uhd_4096_2160_25fps.mp4'
+      },
+      {
+        name: 'NIYOJAK',
+        quote: '“They didn\'t just execute the film. They understood why we needed it.”',
+        author: 'Ananya Rao',
+        role: 'Brand Director, Niyojak',
+        video: 'assets/videos/kode-landing.mp4'
+      },
+      {
+        name: 'SATTVA',
+        quote: '“Precision, elegance, and filmic craft. They elevated our corporate film into a visual story.”',
+        author: 'Meera Sen',
+        role: 'Head of Communications, Sattva',
+        video: 'assets/videos/13434213_3840_2160_24fps.mp4'
+      },
+      {
+        name: 'OBEROI',
+        quote: '“Every frame of our hospitality campaign felt timeless and meticulously composed.”',
+        author: 'Dev Sen',
+        role: 'Creative Director, Oberoi Group',
+        video: 'assets/videos/16201893_1080_1920_60fps.mp4'
+      },
+      {
+        name: 'WILDCRAFT',
+        quote: '“Documenting nature requires patience and grit. Envizon delivered breathtaking visuals.”',
+        author: 'Rohan Mehta',
+        role: 'Executive Producer, Wildcraft',
+        video: 'assets/videos/8089116-uhd_4096_2160_25fps.mp4'
+      },
+      {
+        name: 'AMARA',
+        quote: '“Flawless post-production and editing. They brought our brand film vision alive.”',
+        author: 'Ira Menon',
+        role: 'Chief Brand Officer, Amara',
+        video: 'assets/videos/kode-landing.mp4'
+      }
+    ];
+
+    const quoteEl = proofSection.querySelector('[data-proof-quote]');
+    const creditEl = proofSection.querySelector('[data-proof-credit]');
+    const counterEl = proofSection.querySelector('[data-proof-counter]');
+    const playToggleBtn = proofSection.querySelector('[data-proof-play-toggle]');
+    const logoItems = Array.from(proofSection.querySelectorAll('.logo-item'));
+    const bgVideoA = proofSection.querySelector('[data-proof-video="a"]');
+    const bgVideoB = proofSection.querySelector('[data-proof-video="b"]');
+
+    if (!quoteEl || !creditEl || !logoItems.length) return;
+
+    let currentIndex = 0;
+    let isPlaying = true;
+    let activeVideoTag = 'a';
+    let progressTimer = null;
+    let progressVal = 0;
+    const CYCLE_DURATION = 6000;
+    const INTERVAL_STEP = 50;
+
+    const videoCache = {};
+    clients.forEach((c) => {
+      if (!videoCache[c.video]) {
+        const v = document.createElement('video');
+        v.src = c.video;
+        v.preload = 'auto';
+        videoCache[c.video] = v;
+      }
+    });
+
+    const updateCounter = (index) => {
+      if (counterEl) {
+        counterEl.textContent = `0${index + 1} / 0${clients.length}`;
+      }
+    };
+
+    const updateVideoBackground = (videoUrl) => {
+      const activeVideo = activeVideoTag === 'a' ? bgVideoA : bgVideoB;
+      const nextVideo = activeVideoTag === 'a' ? bgVideoB : bgVideoA;
+
+      if (!activeVideo || !nextVideo) return;
+
+      let sourceTag = nextVideo.querySelector('source');
+      if (!sourceTag) {
+        sourceTag = document.createElement('source');
+        nextVideo.appendChild(sourceTag);
+      }
+
+      if (sourceTag.src.indexOf(videoUrl) === -1) {
+        sourceTag.src = videoUrl;
+        nextVideo.load();
+      }
+
+      nextVideo.play().catch(() => {});
+
+      nextVideo.classList.add('is-active');
+      activeVideo.classList.remove('is-active');
+
+      activeVideoTag = activeVideoTag === 'a' ? 'b' : 'a';
+    };
+
+    const setProgress = (index, val) => {
+      logoItems.forEach((item, idx) => {
+        const fill = item.querySelector('.logo-item__fill');
+        if (!fill) return;
+        if (idx === index) {
+          fill.style.transform = `scaleX(${val})`;
+        } else if (idx < index) {
+          fill.style.transform = 'scaleX(1)';
+        } else {
+          fill.style.transform = 'scaleX(0)';
+        }
+      });
+    };
+
+    const showClient = (index, immediate = false) => {
+      if (index < 0) index = clients.length - 1;
+      if (index >= clients.length) index = 0;
+      currentIndex = index;
+
+      const client = clients[currentIndex];
+
+      logoItems.forEach((item, idx) => {
+        const isActive = idx === currentIndex;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-selected', String(isActive));
+      });
+
+      updateCounter(currentIndex);
+      updateVideoBackground(client.video);
+
+      if (immediate) {
+        quoteEl.textContent = client.quote;
+        creditEl.innerHTML = `<span class="proof__author">${client.author}</span> / <span class="proof__role">${client.role}</span>`;
+        quoteEl.classList.remove('is-transitioning');
+        creditEl.classList.remove('is-transitioning');
+      } else {
+        quoteEl.classList.add('is-transitioning');
+        creditEl.classList.add('is-transitioning');
+
+        setTimeout(() => {
+          quoteEl.textContent = client.quote;
+          creditEl.innerHTML = `<span class="proof__author">${client.author}</span> / <span class="proof__role">${client.role}</span>`;
+          quoteEl.classList.remove('is-transitioning');
+          creditEl.classList.remove('is-transitioning');
+        }, 300);
+      }
+
+      resetProgress();
+    };
+
+    const resetProgress = () => {
+      clearInterval(progressTimer);
+      progressVal = 0;
+      setProgress(currentIndex, 0);
+
+      if (isPlaying) {
+        startProgressTimer();
+      }
+    };
+
+    const startProgressTimer = () => {
+      clearInterval(progressTimer);
+      const increment = INTERVAL_STEP / CYCLE_DURATION;
+
+      progressTimer = setInterval(() => {
+        progressVal += increment;
+        if (progressVal >= 1) {
+          progressVal = 1;
+          setProgress(currentIndex, 1);
+          clearInterval(progressTimer);
+          showClient(currentIndex + 1);
+        } else {
+          setProgress(currentIndex, progressVal);
+        }
+      }, INTERVAL_STEP);
+    };
+
+    const togglePlay = () => {
+      isPlaying = !isPlaying;
+      if (playToggleBtn) {
+        const icon = playToggleBtn.querySelector('i');
+        const statusSpan = playToggleBtn.querySelector('.proof__status');
+        if (icon) {
+          icon.className = isPlaying ? 'ph-light ph-pause' : 'ph-light ph-play';
+        }
+        if (statusSpan) {
+          statusSpan.textContent = isPlaying ? 'AUTO' : 'PAUSED';
+        }
+      }
+      if (isPlaying) {
+        startProgressTimer();
+      } else {
+        clearInterval(progressTimer);
+      }
+    };
+
+    logoItems.forEach((item, idx) => {
+      item.addEventListener('click', () => {
+        showClient(idx);
+      });
+
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = (idx + 1) % clients.length;
+          logoItems[next].focus();
+          showClient(next);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const prev = (idx - 1 + clients.length) % clients.length;
+          logoItems[prev].focus();
+          showClient(prev);
+        }
+      });
+    });
+
+    if (playToggleBtn) {
+      playToggleBtn.addEventListener('click', togglePlay);
+    }
+
+    const proofBody = proofSection.querySelector('.proof__body');
+    if (proofBody) {
+      proofBody.addEventListener('mouseenter', () => {
+        if (isPlaying) clearInterval(progressTimer);
+      });
+      proofBody.addEventListener('mouseleave', () => {
+        if (isPlaying) startProgressTimer();
+      });
+    }
+
+    showClient(0, true);
+  };
+
+  initCustomButtons();
+  initClientProofSection();
 
   document.querySelector('[data-back-top]').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   });
 })();
+

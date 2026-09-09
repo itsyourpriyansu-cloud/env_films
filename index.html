@@ -34,9 +34,7 @@
       <span class="header__logo-marker" aria-hidden="true" data-logo-destination></span>
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#work">Work</a>
-        <a href="#directors">Directors</a>
         <a href="#services">Services</a>
-        <a href="#studio">Studio</a>
         <a href="#journal">Journal</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -48,11 +46,9 @@
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <nav aria-label="Mobile navigation">
         <a href="#work"><span>01</span> Work</a>
-        <a href="#directors"><span>02</span> Directors</a>
-        <a href="#services"><span>03</span> Services</a>
-        <a href="#studio"><span>04</span> Studio</a>
-        <a href="#journal"><span>05</span> Journal</a>
-        <a href="#contact"><span>06</span> Contact</a>
+        <a href="#services"><span>02</span> Services</a>
+        <a href="#journal"><span>03</span> Journal</a>
+        <a href="#contact"><span>04</span> Contact</a>
       </nav>
       <div class="mobile-menu__foot mono">
         <div><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a></div>
@@ -71,10 +67,24 @@
             <span class="line"><span>We turn ideas</span></span>
             <span class="line"><span>into films.</span></span>
           </h1>
-          <!-- <div class="hero__actions">
-          <button class="showreel-link" type="button" data-showreel>Play showreel <span class="mono">01:12</span><i class="ph-light ph-arrow-right" aria-hidden="true"></i></button>
-          <a class="hero__work-link" href="#work">Selected work <span aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span></a>
-        </div> -->
+          <div class="hero__actions">
+            <button class="btn-custom" type="button" data-showreel>
+              <span class="btn-custom__box">
+                <span class="btn-custom__text">PLAY SHOWREEL</span>
+              </span>
+              <span class="btn-custom__icon">
+                <i class="ph-light ph-play" aria-hidden="true"></i>
+              </span>
+            </button>
+            <a class="btn-custom" href="#work">
+              <span class="btn-custom__box">
+                <span class="btn-custom__text">SELECTED WORK</span>
+              </span>
+              <span class="btn-custom__icon">
+                <i class="ph-light ph-arrow-down" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
         </div>
         <div class="hero__meta mono">
           <span>Envizon Films / Production</span><span>Hyderabad / India</span><span>2026</span>
@@ -138,25 +148,36 @@
           </article>
         </div>
 
-        <div class="work-footer reveal"><p>Commercials, brand films, documentaries and moving images for every screen.</p><a class="text-link" href="#more-work">All work <span aria-hidden="true"><i class="ph-light ph-arrow-right"></i></span></a></div>
-      </section>
-
-      <section class="section manifesto" id="studio" aria-labelledby="manifesto-title">
-        <div class="section-label mono reveal"><span>02</span><span>Point of view</span></div>
-        <h2 id="manifesto-title" class="manifesto__title" data-reveal-heading data-heading-theme="light" data-reveal-emphasis="end">A film should do more<br>than look good.<br>It should make<br><span class="heading-highlight">something happen<span class="brand-period">.</span></span></h2>
-        <div class="manifesto__note reveal"><span class="mono">Our approach / 2026</span><p>We begin with the feeling a story should leave behind. Then we assemble the right people, details and decisions to make that feeling real.</p></div>
-        <div class="contact-sheet reveal" aria-label="Behind the scenes contact sheet">
-          <figure><img src="assets/images/bts.jpg" width="1800" height="2250" alt="Crew adjusting studio lights on a dark set" loading="lazy"><figcaption class="mono">LIGHT TEST / FRAME 018</figcaption></figure>
-          <figure><img src="assets/images/hero.jpg" width="2200" height="1487" alt="Film slate before a take on location" loading="lazy"><figcaption class="mono">ROADSIDE / TAKE 09</figcaption></figure>
-          <figure><img src="assets/images/work-04.jpg" width="1600" height="1067" alt="Location scout photographing a mountain landscape" loading="lazy"><figcaption class="mono">SCOUT / 05:42</figcaption></figure>
+        <div class="work-footer reveal">
+          <p>Commercials, brand films, documentaries and moving images for every screen.</p>
+          <a class="btn-custom" href="#more-work">
+            <span class="btn-custom__box">
+              <span class="btn-custom__text">VIEW ALL CASE STUDIES</span>
+            </span>
+            <span class="btn-custom__icon">
+              <i class="ph-light ph-arrow-up-right" aria-hidden="true"></i>
+            </span>
+          </a>
         </div>
       </section>
+
 
       <section class="featured-film dark-zone" aria-labelledby="featured-title">
         <img src="assets/images/work-03.jpg" width="1600" height="1067" alt="Neon-lit city street at night" loading="lazy">
         <div class="featured-film__shade"></div>
         <div class="featured-film__top mono"><span>Featured film / 024</span><span>Commercial / 00:45</span></div>
-        <div class="featured-film__content reveal"><p class="mono">Ather / 2026</p><h2 id="featured-title" data-reveal-heading data-heading-theme="dark">Night<br>belongs to us.</h2><a class="text-link text-link--light" href="#case-study">Watch film <span aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span></a></div>
+        <div class="featured-film__content reveal">
+          <p class="mono">Ather / 2026</p>
+          <h2 id="featured-title" data-reveal-heading data-heading-theme="dark">Night<br>belongs to us.</h2>
+          <a class="btn-custom" href="#case-study">
+            <span class="btn-custom__box">
+              <span class="btn-custom__text">WATCH FILM</span>
+            </span>
+            <span class="btn-custom__icon">
+              <i class="ph-light ph-arrow-up-right" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
       </section>
 
       <section class="section services" id="services" aria-labelledby="services-title">
@@ -188,36 +209,166 @@
             <div><dt class="mono">The idea</dt><dd>One road. One traveller. A sequence of small decisions that gradually opens into a wider world.</dd></div>
             <div><dt class="mono">Deliverables</dt><dd>Hero film / 45 sec cut / 6 social edits / stills library</dd></div>
           </dl>
-          <a class="text-link text-link--light" href="#work">View project <span aria-hidden="true"><i class="ph-light ph-arrow-right"></i></span></a>
+          <a class="btn-custom" href="#work">
+            <span class="btn-custom__box">
+              <span class="btn-custom__text">VIEW PROJECT</span>
+            </span>
+            <span class="btn-custom__icon">
+              <i class="ph-light ph-arrow-up-right" aria-hidden="true"></i>
+            </span>
+          </a>
         </div>
       </section>
 
       <section class="section process" aria-labelledby="process-title">
         <div class="process__head reveal"><div class="section-label mono"><span>05</span><span>Process</span></div><h2 id="process-title" data-reveal-heading data-heading-theme="light">The work is the design.<br>The process makes it <span class="heading-highlight">possible.</span></h2></div>
         <ol class="process__list">
-          <li class="reveal"><span class="process__num">01</span><h3>Understand</h3><p>We find the human truth beneath the brief.</p></li>
-          <li class="reveal"><span class="process__num">02</span><h3>Idea</h3><p>We shape the single thought every frame will serve.</p></li>
-          <li class="reveal"><span class="process__num">03</span><h3>Pre-production</h3><p>We turn intention into a plan that protects the work.</p></li>
-          <li class="reveal"><span class="process__num">04</span><h3>Shoot</h3><p>We stay precise, curious and alive to the unexpected.</p></li>
-          <li class="reveal"><span class="process__num">05</span><h3>Post</h3><p>We cut, grade and finish until the story feels inevitable.</p></li>
-          <li class="reveal"><span class="process__num">06</span><h3>Delivery</h3><p>Every format, version and final frame—ready for the world.</p></li>
+          <li class="reveal" tabindex="0">
+            <span class="process__num">01</span>
+            <h3>Understand</h3>
+            <p>We find the human truth beneath the brief.</p>
+            <div class="process__card" aria-hidden="true">
+              <div class="process__card-media">
+                <img src="assets/images/process-01.png" alt="Understand process image" loading="lazy">
+              </div>
+              <div class="process__card-info">
+                <span class="mono">01 / UNDERSTAND</span>
+                <p>We find the human truth beneath the brief.</p>
+              </div>
+            </div>
+          </li>
+          <li class="reveal" tabindex="0">
+            <span class="process__num">02</span>
+            <h3>Idea</h3>
+            <p>We shape the single thought every frame will serve.</p>
+            <div class="process__card" aria-hidden="true">
+              <div class="process__card-media">
+                <img src="assets/images/process-02.png" alt="Idea process image" loading="lazy">
+              </div>
+              <div class="process__card-info">
+                <span class="mono">02 / IDEA</span>
+                <p>We shape the single thought every frame will serve.</p>
+              </div>
+            </div>
+          </li>
+          <li class="reveal" tabindex="0">
+            <span class="process__num">03</span>
+            <h3>Pre-production</h3>
+            <p>We turn intention into a plan that protects the work.</p>
+            <div class="process__card" aria-hidden="true">
+              <div class="process__card-media">
+                <img src="assets/images/process-03.png" alt="Pre-production process image" loading="lazy">
+              </div>
+              <div class="process__card-info">
+                <span class="mono">03 / PRE-PRODUCTION</span>
+                <p>We turn intention into a plan that protects the work.</p>
+              </div>
+            </div>
+          </li>
+          <li class="reveal" tabindex="0">
+            <span class="process__num">04</span>
+            <h3>Shoot</h3>
+            <p>We stay precise, curious and alive to the unexpected.</p>
+            <div class="process__card" aria-hidden="true">
+              <div class="process__card-media">
+                <img src="assets/images/process-04.png" alt="Shoot process image" loading="lazy">
+              </div>
+              <div class="process__card-info">
+                <span class="mono">04 / SHOOT</span>
+                <p>We stay precise, curious and alive to the unexpected.</p>
+              </div>
+            </div>
+          </li>
+          <li class="reveal" tabindex="0">
+            <span class="process__num">05</span>
+            <h3>Post</h3>
+            <p>We cut, grade and finish until the story feels inevitable.</p>
+            <div class="process__card" aria-hidden="true">
+              <div class="process__card-media">
+                <img src="assets/images/process-05.png" alt="Post process image" loading="lazy">
+              </div>
+              <div class="process__card-info">
+                <span class="mono">05 / POST</span>
+                <p>We cut, grade and finish until the story feels inevitable.</p>
+              </div>
+            </div>
+          </li>
+          <li class="reveal" tabindex="0">
+            <span class="process__num">06</span>
+            <h3>Delivery</h3>
+            <p>Every format, version and final frame—ready for the world.</p>
+            <div class="process__card" aria-hidden="true">
+              <div class="process__card-media">
+                <img src="assets/images/process-06.png" alt="Delivery process image" loading="lazy">
+              </div>
+              <div class="process__card-info">
+                <span class="mono">06 / DELIVERY</span>
+                <p>Every format, version and final frame—ready for the world.</p>
+              </div>
+            </div>
+          </li>
         </ol>
       </section>
 
-      <section class="section directors" id="directors" aria-labelledby="directors-title">
-        <div class="directors__head reveal"><div class="section-label mono"><span>06</span><span>Creative collective</span></div><h2 id="directors-title" data-reveal-heading data-heading-theme="light">Distinct voices.<br><span class="heading-highlight">One standard.</span></h2></div>
-        <div class="director-grid">
-          <article class="director reveal"><a href="#contact"><figure><img src="assets/images/director-01.jpg" width="1200" height="1800" alt="Portrait of director Arjun Varma" loading="lazy"><span>View reel <i class="ph-light ph-arrow-right"></i></span></figure><h3>Arjun Varma</h3><p class="mono">Commercial / Automotive / Human stories</p></a></article>
-          <article class="director director--offset reveal"><a href="#contact"><figure><img src="assets/images/director-02.jpg" width="1200" height="1800" alt="Portrait of director Mira Shah" loading="lazy"><span>View reel <i class="ph-light ph-arrow-right"></i></span></figure><h3>Mira Shah</h3><p class="mono">Fashion / Food / Performance</p></a></article>
-        </div>
-        <a class="text-link directors__link" href="#contact">Meet the collective <span aria-hidden="true"><i class="ph-light ph-arrow-right"></i></span></a>
-      </section>
 
-      <section class="proof dark-zone" aria-labelledby="proof-title">
-        <div class="section-label mono reveal"><span>07</span><span>Client proof</span></div>
-        <blockquote id="proof-title" data-reveal-heading data-heading-theme="dark">“They didn't just execute the film. They understood why we needed it.”</blockquote>
-        <p class="proof__credit mono reveal">Ananya Rao / Brand Director, Niyojak</p>
-        <div class="logo-grid mono reveal" aria-label="Selected clients"><span>ATHER</span><span>NIYOJAK</span><span>SATTVA</span><span>OBEROI</span><span>WILDCRAFT</span><span>AMARA</span></div>
+
+      <section class="proof dark-zone" id="proof" aria-labelledby="proof-title">
+        <div class="proof__video-wrap" aria-hidden="true">
+          <video class="proof__bg-video is-active" autoplay loop muted playsinline preload="auto" data-proof-video="a">
+            <source src="assets/videos/8089116-uhd_4096_2160_25fps.mp4" type="video/mp4">
+          </video>
+          <video class="proof__bg-video" loop muted playsinline preload="auto" data-proof-video="b">
+            <source src="assets/videos/kode-landing.mp4" type="video/mp4">
+          </video>
+          <div class="proof__overlay"></div>
+        </div>
+
+        <div class="proof__container">
+          <div class="proof__header reveal">
+            <div class="section-label mono"><span>07</span><span>Client proof</span></div>
+            <div class="proof__controls mono">
+              
+              <span class="proof__counter" data-proof-counter>01 / 06</span>
+            </div>
+          </div>
+
+          <div class="proof__body reveal">
+            
+            <blockquote id="proof-title" class="proof__quote" data-proof-quote>
+              “Ather's night shoot was brutal, but Envizon captured raw energy like no one else.”
+            </blockquote>
+            <p class="proof__credit mono" data-proof-credit>
+              <span class="proof__author">Vikram Malhotra</span> / <span class="proof__role">Lead Creative, Ather Energy</span>
+            </p>
+          </div>
+
+          <div class="logo-grid mono reveal" role="tablist" aria-label="Selected clients">
+            <button class="logo-item is-active" role="tab" aria-selected="true" aria-controls="proof-title" data-client-index="0">
+              <span class="logo-item__text">ATHER</span>
+              <span class="logo-item__progress"><span class="logo-item__fill"></span></span>
+            </button>
+            <button class="logo-item" role="tab" aria-selected="false" aria-controls="proof-title" data-client-index="1">
+              <span class="logo-item__text">NIYOJAK</span>
+              <span class="logo-item__progress"><span class="logo-item__fill"></span></span>
+            </button>
+            <button class="logo-item" role="tab" aria-selected="false" aria-controls="proof-title" data-client-index="2">
+              <span class="logo-item__text">SATTVA</span>
+              <span class="logo-item__progress"><span class="logo-item__fill"></span></span>
+            </button>
+            <button class="logo-item" role="tab" aria-selected="false" aria-controls="proof-title" data-client-index="3">
+              <span class="logo-item__text">OBEROI</span>
+              <span class="logo-item__progress"><span class="logo-item__fill"></span></span>
+            </button>
+            <button class="logo-item" role="tab" aria-selected="false" aria-controls="proof-title" data-client-index="4">
+              <span class="logo-item__text">WILDCRAFT</span>
+              <span class="logo-item__progress"><span class="logo-item__fill"></span></span>
+            </button>
+            <button class="logo-item" role="tab" aria-selected="false" aria-controls="proof-title" data-client-index="5">
+              <span class="logo-item__text">AMARA</span>
+              <span class="logo-item__progress"><span class="logo-item__fill"></span></span>
+            </button>
+          </div>
+        </div>
       </section>
 
       <section class="section more-work" id="more-work" aria-labelledby="more-title">
@@ -232,7 +383,23 @@
       <section class="section journal dark-zone" id="journal" aria-labelledby="journal-title">
         <div class="journal__head reveal"><div class="section-label mono"><span>09</span><span>Journal</span></div><h2 id="journal-title" data-reveal-heading data-heading-theme="dark">Notes from<br>behind the frame.</h2></div>
         <div class="journal-grid">
-          <article class="journal-card journal-card--feature reveal"><a href="#contact"><img src="assets/images/bts.jpg" width="1800" height="2250" alt="Crew members working with studio lighting" loading="lazy"><p class="mono">Craft / 06.08.2026</p><h3>What the light is really doing</h3><span class="text-link text-link--light">Read story <span aria-hidden="true"><i class="ph-light ph-arrow-right"></i></span></span></a></article>
+          <article class="journal-card journal-card--feature reveal">
+            <a href="#contact">
+              <img src="assets/images/bts.jpg" width="1800" height="2250" alt="Crew members working with studio lighting" loading="lazy">
+              <p class="mono">Craft / 06.08.2026</p>
+              <div class="journal-card__action-row">
+                <h3>What the light is really doing</h3>
+                <span class="btn-custom">
+                  <span class="btn-custom__box">
+                    <span class="btn-custom__text">READ STORY</span>
+                  </span>
+                  <span class="btn-custom__icon">
+                    <i class="ph-light ph-arrow-up-right" aria-hidden="true"></i>
+                  </span>
+                </span>
+              </div>
+            </a>
+          </article>
           <article class="journal-card reveal"><a href="#contact"><img src="assets/images/work-04.jpg" width="1600" height="1067" alt="Location photographer above a mountain valley" loading="lazy"><p class="mono">Field notes / 24.07.2026</p><h3>Scouting for atmosphere, not just a location</h3></a></article>
           <article class="journal-card reveal"><a href="#contact"><img src="assets/images/hero.jpg" width="2200" height="1487" alt="Close-up of a film slate on location" loading="lazy"><p class="mono">Production / 12.06.2026</p><h3>The ten decisions before “action”</h3></a></article>
         </div>
@@ -248,12 +415,31 @@
     <footer class="footer dark-zone">
       <div class="footer__title" aria-hidden="true"><span>ENVIZON</span><span>FILMS</span></div>
       <div class="footer__grid">
-        <div class="footer__nav"><a href="#work">Work</a><a href="#directors">Directors</a><a href="#services">Services</a><a href="#studio">Studio</a><a href="#journal">Journal</a></div>
+        <div class="footer__nav"><a href="#work">Work</a><a href="#services">Services</a><a href="#journal">Journal</a></div>
         <div class="footer__social"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a></div>
         <address>Hyderabad<br>India<br><a href="mailto:hello@envizonfilms.com">Email us <i class="ph-light ph-arrow-up-right"></i></a></address>
-        <a class="footer__cta" href="mailto:hello@envizonfilms.com">Start a project <span aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span></a>
+        <a class="btn-custom footer__cta" href="mailto:hello@envizonfilms.com">
+          <span class="btn-custom__box">
+            <span class="btn-custom__text">START A PROJECT</span>
+          </span>
+          <span class="btn-custom__icon">
+            <i class="ph-light ph-handshake" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 256 256" fill="#000000" style="display:block;">
+                <path d="M247.42,117.44,213.7,83.72a16,16,0,0,0-22.63,0L174.75,100.1l-10.72-10.73a16,16,0,0,0-22.63,0L130.68,100.1l-10.8-10.73a16,16,0,0,0-22.63,0L80,106.63,55.51,82.14a16,16,0,0,0-22.63,0L8.58,106.44a16,16,0,0,0,0,22.63l46.06,46.06a16,16,0,0,0,22.63,0l12.78-12.78L106.75,179a16,16,0,0,0,22.63,0l10.72-10.73L150.83,179a16,16,0,0,0,22.63,0l10.72-10.73,12.78,12.78a16,16,0,0,0,22.63,0l27.83-27.83A16,16,0,0,0,247.42,117.44ZM236.1,128.75l-27.83,27.83a16,16,0,0,1-22.63,0l-12.78-12.78,10.72-10.73a16,16,0,0,0-22.63-22.63l-10.72,10.73-10.72-10.73a16,16,0,0,0-22.63-22.63L130.68,100.1l-10.8-10.73a16,16,0,0,0-22.63,0L80,106.63Z" />
+              </svg>
+            </i>
+          </span>
+        </a>
       </div>
-      <div class="footer__bottom mono"><span>©2026 Envizon Films</span><span>Privacy / Terms</span><button type="button" data-back-top>Back to top <i class="ph-light ph-arrow-up"></i></button></div>
+      <div class="footer__bottom mono">
+        <span>©2026 Envizon Films</span>
+        <span>Privacy / Terms</span>
+        <button class="btn-custom btn-custom--icon-only" type="button" data-back-top aria-label="Back to top">
+          <span class="btn-custom__icon">
+            <i class="ph-light ph-arrow-up" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
     </footer>
 
     <dialog class="showreel" data-showreel-dialog aria-labelledby="showreel-title">
