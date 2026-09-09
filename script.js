@@ -500,6 +500,20 @@
       const video = card.querySelector('.project__video');
       if (!video) return;
 
+      video.muted = true;
+
+      const setThumbnailFrame = () => {
+        if (video.currentTime === 0) {
+          video.currentTime = 0.001;
+        }
+      };
+
+      if (video.readyState >= 1) {
+        setThumbnailFrame();
+      } else {
+        video.addEventListener('loadedmetadata', setThumbnailFrame, { once: true });
+      }
+
       let playPromise = null;
 
       const startPlayback = () => {
@@ -512,19 +526,19 @@
       };
 
       const stopPlayback = () => {
+        const resetVideo = () => {
+          video.pause();
+          try {
+            video.currentTime = 0.001;
+          } catch (e) {}
+        };
+
         if (playPromise !== undefined && playPromise !== null) {
           playPromise
-            .then(() => {
-              video.pause();
-              video.currentTime = 0;
-            })
-            .catch(() => {
-              video.pause();
-              video.currentTime = 0;
-            });
+            .then(resetVideo)
+            .catch(resetVideo);
         } else {
-          video.pause();
-          video.currentTime = 0;
+          resetVideo();
         }
       };
 
@@ -837,6 +851,7 @@
 
   initCustomButtons();
   initClientProofSection();
+  initProjectVideoHover();
 
   document.querySelector('[data-back-top]').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
