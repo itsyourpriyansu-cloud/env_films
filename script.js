@@ -1,6 +1,6 @@
 (() => {
   const header = document.querySelector('[data-header]');
-  const hero = document.querySelector('.hero');
+  const hero = document.querySelector('.hero, .cs-hero');
   const heroLogo = document.querySelector('[data-hero-logo]');
   const logoDestination = document.querySelector('[data-logo-destination]');
   const menuButton = document.querySelector('.menu-toggle');
@@ -26,6 +26,10 @@
   const initHeroMotion = () => {
     const gsap = window.gsap;
     const ScrollTrigger = window.ScrollTrigger;
+    if (!hero || !heroLogo || !logoDestination) {
+      document.documentElement.classList.remove('hero-pending');
+      return;
+    }
     const heroContent = hero.querySelector('.hero__content');
     const heroMeta = hero.querySelector('.hero__meta');
     const heroVideo = hero.querySelector('.hero__media');
@@ -340,13 +344,14 @@
   let lastScrollY = window.scrollY;
 
   const updateHeader = () => {
+    if (!header) return;
     const currentScrollY = window.scrollY;
     const y = currentScrollY + 42;
-    const inHero = y < hero.offsetTop + hero.offsetHeight;
+    const inHero = hero ? y < hero.offsetTop + hero.offsetHeight : false;
     const currentDark = darkZones.some((zone) => y >= zone.top && y < zone.bottom);
     header.classList.toggle('is-dark', !inHero && currentDark);
     header.classList.toggle('is-solid', !inHero && !currentDark);
-    heroLogo.classList.toggle('is-on-light', !inHero && !currentDark);
+    if (heroLogo) heroLogo.classList.toggle('is-on-light', !inHero && !currentDark);
 
     const menuOpen = document.body.classList.contains('menu-open');
     if (menuOpen || currentScrollY <= 80) {
@@ -360,10 +365,14 @@
     lastScrollY = currentScrollY;
   };
   const mapDarkZones = () => {
-    darkZones = [...document.querySelectorAll('.dark-zone')].map((zone) => ({
-      top: zone.offsetTop,
-      bottom: zone.offsetTop + zone.offsetHeight
-    }));
+    const pageScrollY = window.scrollY;
+    darkZones = [...document.querySelectorAll('.dark-zone')].filter(Boolean).map((zone) => {
+      const rect = zone.getBoundingClientRect();
+      return {
+        top: rect.top + pageScrollY,
+        bottom: rect.bottom + pageScrollY
+      };
+    });
     updateHeader();
   };
   window.addEventListener('scroll', updateHeader, { passive: true });
