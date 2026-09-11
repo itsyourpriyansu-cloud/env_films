@@ -1,6 +1,6 @@
 (() => {
   const header = document.querySelector('[data-header]');
-  const hero = document.querySelector('.hero, .cs-hero');
+  const hero = document.querySelector('.hero, .work-hero, .project-hero, .services-hero, .cs-hero');
   const heroLogo = document.querySelector('[data-hero-logo]');
   const logoDestination = document.querySelector('[data-logo-destination]');
   const menuButton = document.querySelector('.menu-toggle');
@@ -328,9 +328,98 @@
     requestAnimationFrame(animateGrain);
   };
 
+  const initSnapImageReveal = () => {
+    const gsap = window.gsap;
+    const ScrollTrigger = window.ScrollTrigger;
+    const wrappers = document.querySelectorAll('[data-image-reveal]');
+
+    if (!gsap || !ScrollTrigger || !wrappers.length) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (prefersReducedMotion) {
+      wrappers.forEach((wrapper) => {
+        const image = wrapper.querySelector('img, picture img');
+        gsap.set(wrapper, { clipPath: 'inset(0% 0% 0% 0%)' });
+        if (image) gsap.set(image, { yPercent: 0, scale: 1, opacity: 1 });
+      });
+      return;
+    }
+
+    const mm = gsap.matchMedia();
+
+    mm.add({
+      isDesktop: '(min-width: 1024px)',
+      isTablet: '(min-width: 641px) and (max-width: 1023px)',
+      isMobile: '(max-width: 640px)'
+    }, (context) => {
+      const { isTablet, isMobile } = context.conditions;
+
+      // Group wrappers by parent grid or section for subtle staggered entrance
+      const sectionMap = new Map();
+      wrappers.forEach((wrapper) => {
+        const section = wrapper.closest('section, .case-grid, .frame-study__grid, .related-work__grid') || document.body;
+        if (!sectionMap.has(section)) {
+          sectionMap.set(section, []);
+        }
+        sectionMap.get(section).push(wrapper);
+      });
+
+      sectionMap.forEach((groupWrappers) => {
+        groupWrappers.forEach((wrapper, index) => {
+          const image = wrapper.querySelector('img, picture img');
+          if (!image) return;
+
+          const isLarge = wrapper.classList.contains('work-bridge__media') || wrapper.offsetWidth > 900;
+          let yP = isMobile ? 4 : (isTablet ? 6 : (isLarge ? 5.5 : 8));
+          let sc = isMobile ? 1.015 : (isTablet ? 1.025 : (isLarge ? 1.02 : 1.035));
+          let wrapDur = isMobile ? 0.85 : (isTablet ? 1.0 : (isLarge ? 1.2 : 1.1));
+          let imgDur = isMobile ? 0.95 : (isTablet ? 1.1 : (isLarge ? 1.25 : 1.2));
+
+          gsap.set(wrapper, {
+            clipPath: 'inset(100% 0% 0% 0%)'
+          });
+
+          gsap.set(image, {
+            yPercent: yP,
+            scale: sc,
+            opacity: 0.85
+          });
+
+          const staggerDelay = groupWrappers.length > 1 ? Math.min(index * 0.1, 0.3) : 0;
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: wrapper,
+              start: 'top 88%',
+              once: true,
+              toggleActions: 'play none none none'
+            },
+            delay: staggerDelay
+          });
+
+          tl.to(wrapper, {
+            clipPath: 'inset(0% 0% 0% 0%)',
+            duration: wrapDur,
+            ease: 'power4.out'
+          }, 0);
+
+          tl.to(image, {
+            yPercent: 0,
+            scale: 1,
+            opacity: 1,
+            duration: imgDur,
+            ease: 'power4.out'
+          }, 0);
+        });
+      });
+    });
+  };
+
   const initAllMotion = () => {
     initHeroMotion();
     initSectionHeadingReveal();
+    initSnapImageReveal();
     initMotionFilmGrain();
   };
 
@@ -343,12 +432,18 @@
   let darkZones = [];
   let lastScrollY = window.scrollY;
 
+  const getHero = () => hero || document.querySelector('.hero, .work-hero, .project-hero, .services-hero, .cs-hero');
+
   const updateHeader = () => {
     if (!header) return;
     const currentScrollY = window.scrollY;
+    const activeHero = getHero();
+    const heroBottom = activeHero ? (activeHero.offsetTop + activeHero.offsetHeight) : window.innerHeight;
+    const inHero = currentScrollY < (heroBottom - 80);
+
     const y = currentScrollY + 42;
-    const inHero = hero ? y < hero.offsetTop + hero.offsetHeight : false;
     const currentDark = darkZones.some((zone) => y >= zone.top && y < zone.bottom);
+
     header.classList.toggle('is-dark', !inHero && currentDark);
     header.classList.toggle('is-solid', !inHero && !currentDark);
     if (heroLogo) heroLogo.classList.toggle('is-on-light', !inHero && !currentDark);
@@ -623,10 +718,10 @@
 
     const clients = [
       {
-        name: 'ATHER',
-        quote: '“Ather\'s night shoot was brutal, but Envizon captured raw energy like no one else.”',
+        name: 'VOLTARC',
+        quote: '“Voltarc\'s night shoot was brutal, but Envizon captured raw energy like no one else.”',
         author: 'Vikram Malhotra',
-        role: 'Lead Creative, Ather Energy',
+        role: 'Lead Creative, Voltarc',
         video: 'assets/videos/8089116-uhd_4096_2160_25fps.mp4'
       },
       {
@@ -637,31 +732,31 @@
         video: 'assets/videos/kode-landing.mp4'
       },
       {
-        name: 'SATTVA',
-        quote: '“Precision, elegance, and filmic craft. They elevated our corporate film into a visual story.”',
+        name: 'SAMVAAD STUDIOS',
+        quote: '“Precision, elegance, and filmic craft. They elevated our podcast into a visual series.”',
         author: 'Meera Sen',
-        role: 'Head of Communications, Sattva',
+        role: 'Head of Communications, Samvaad Studios',
         video: 'assets/videos/13434213_3840_2160_24fps.mp4'
       },
       {
-        name: 'OBEROI',
+        name: 'VILASA PALACES',
         quote: '“Every frame of our hospitality campaign felt timeless and meticulously composed.”',
         author: 'Dev Sen',
-        role: 'Creative Director, Oberoi Group',
+        role: 'Creative Director, Vilasa Palaces',
         video: 'assets/videos/16201893_1080_1920_60fps.mp4'
       },
       {
-        name: 'WILDCRAFT',
+        name: 'TRAILBORN',
         quote: '“Documenting nature requires patience and grit. Envizon delivered breathtaking visuals.”',
         author: 'Rohan Mehta',
-        role: 'Executive Producer, Wildcraft',
+        role: 'Executive Producer, Trailborn',
         video: 'assets/videos/8089116-uhd_4096_2160_25fps.mp4'
       },
       {
-        name: 'AMARA',
-        quote: '“Flawless post-production and editing. They brought our brand film vision alive.”',
+        name: 'SUVARNA',
+        quote: '“Every macro shot felt like a close read of the craft. They made gold feel personal.”',
         author: 'Ira Menon',
-        role: 'Chief Brand Officer, Amara',
+        role: 'Chief Brand Officer, Suvarna',
         video: 'assets/videos/kode-landing.mp4'
       }
     ];

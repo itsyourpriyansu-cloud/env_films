@@ -1,6 +1,4 @@
 .case-studies-page { --mono: var(--font-mono); --sans: var(--font-display); --yellow: var(--envizon-yellow); --grid-gap: clamp(.75rem, 1.5vw, 1.5rem); background: var(--off-white); color: var(--black); }
-.case-studies-page .site-header { color: var(--white); }
-.case-studies-page .site-header.is-scrolled { color: var(--black); }
 .case-studies-page .desktop-nav .is-active::after { transform: scaleX(1); }
 .case-studies-page .work-hero { position: relative; min-height: 100svh; overflow: hidden; background: #080808; color: var(--white); display: flex; align-items: flex-end; }
 .case-studies-page .work-hero__media, .case-studies-page .work-hero__veil { position: absolute; inset: 0; width: 100%; height: 100%; }
