@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="case-study.css">
+    <link rel="stylesheet" href="inner-pages.css">
     <script type="application/ld+json" id="project-schema">{"@context":"https://schema.org","@type":"VideoObject","name":"Envizon Films Case Study","description":"A film project by Envizon Films.","contentUrl":"case-study.html"}</script>
     <title>Case Study | Envizon Films</title>
   </head>
-  <body class="case-study-page">
+  <body class="case-study-page inner-page">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-header>
       <a class="header__brand-logo" href="index.html" aria-label="Envizon Films homepage">ENVIZON FILMS</a>
@@ -27,13 +28,15 @@
 
     <main id="main">
       <section class="project-hero dark-zone" id="top" aria-labelledby="project-title">
-        <video class="project-hero__video" data-project-hero autoplay muted loop playsinline preload="metadata" poster="assets/images/case-still-moving-hyderabad-sunset.jpg" aria-hidden="true"><source src="assets/videos/8089116-uhd_4096_2160_25fps.mp4" type="video/mp4"></video>
+        <video class="project-hero__video" data-project-hero data-ambient-video autoplay muted loop playsinline preload="metadata" poster="assets/images/case-still-moving-hyderabad-sunset.jpg" aria-hidden="true"><source src="assets/videos/8089116-uhd_4096_2160_25fps.mp4" type="video/mp4"></video>
         <div class="project-hero__veil" aria-hidden="true"></div>
         <div class="project-hero__content"><p class="project-hero__client mono" data-project-client>Client / Niyojak</p><h1 id="project-title" data-project-title data-reveal-heading data-heading-theme="dark">Still Moving.</h1></div>
         <div class="project-hero__foot mono"><span data-project-index>01 / 12</span><span data-project-category>Brand film</span><span data-project-location>Hyderabad / India</span><button type="button" data-watch-film>Watch film <i class="ph-light ph-play" aria-hidden="true"></i></button></div>
       </section>
 
-      <section class="section project-overview" aria-labelledby="overview-title">
+      <nav class="internal-rail" aria-label="Project sections"><span class="internal-rail__label mono">Case study</span><a href="#overview">Overview</a><a href="#film">Film</a><a href="#challenge">Challenge</a><a href="#idea">Idea</a><a href="#frames">Frames</a><a href="#credits">Credits</a></nav>
+
+      <section class="section project-overview" id="overview" aria-labelledby="overview-title">
         <div class="section-label mono"><span>01</span><span>Project overview</span></div>
         <div class="project-overview__lead"><h2 id="overview-title" data-project-summary data-reveal-heading>A quiet brand film about financial planning and the momentum inside every decision.</h2><p data-project-role>Creative + production + post</p></div>
         <dl class="project-overview__meta">
@@ -58,18 +61,18 @@
         <p class="project-film__caption mono" data-film-caption>Niyojak / Still Moving. — Brand film / 00:45</p>
       </section>
 
-      <section class="section project-story project-story--challenge" aria-labelledby="challenge-title">
+      <section class="section project-story project-story--challenge" id="challenge" aria-labelledby="challenge-title">
         <div class="section-label mono"><span>03</span><span>The challenge</span></div>
         <div class="project-story__copy"><h2 id="challenge-title" data-challenge-title data-reveal-heading>Make finance<br>feel like life.</h2><p data-challenge-body>Niyojak needed to talk about financial planning without falling into the usual language of numbers, charts and future promises.</p><div class="project-story__deliverables"><span class="mono">The ask</span><ul data-ask-list></ul></div></div>
         <figure class="project-story__media reveal" data-image-reveal><img data-challenge-image src="assets/images/case-still-moving-challenge.jpg" alt="Project challenge frame" loading="lazy"></figure>
       </section>
 
-      <section class="project-story project-story--idea dark-zone" aria-labelledby="idea-title">
+      <section class="project-story project-story--idea dark-zone" id="idea" aria-labelledby="idea-title">
         <figure class="project-story__media reveal" data-image-reveal><img data-idea-image src="assets/images/service-case-study-road.jpg" alt="Creative idea frame" loading="lazy"></figure>
         <div class="project-story__copy"><div class="section-label mono"><span>04</span><span>The creative idea</span></div><h2 id="idea-title" data-idea-title data-reveal-heading data-heading-theme="dark">One road.<br>A few choices.<br>Everything ahead.</h2><p data-idea-body>Instead of explaining financial planning, the film follows one traveller through a series of quiet decisions.</p></div>
       </section>
 
-      <section class="section frame-study" aria-labelledby="frames-title">
+      <section class="section frame-study" id="frames" aria-labelledby="frames-title">
         <div class="section-head"><div class="section-label mono"><span>05</span><span>Frame study</span></div><h2 id="frames-title" data-reveal-heading>Six moments.<br>One visual language.</h2></div>
         <div class="frame-study__grid">
           <figure class="frame-card frame-card--one reveal" data-frame="0"><div class="frame-card__media" data-image-reveal><img src="assets/images/case-still-moving-hyderabad-sunset.jpg" alt="Project frame 1" loading="lazy"></div><figcaption><span>Frame 01</span><span></span></figcaption></figure>
@@ -81,7 +84,7 @@
         </div>
       </section>
 
-      <section class="project-scope dark-zone" aria-labelledby="scope-title">
+      <section class="project-scope dark-zone" id="credits" aria-labelledby="scope-title">
         <div class="section-label mono"><span>06</span><span>Scope + credits</span></div>
         <div class="project-scope__intro"><h2 id="scope-title" data-scope-title>Creative + production + post</h2><div><p class="mono">Services</p><ul class="project-scope__tags" data-scope-services></ul></div><div><p class="mono">Deliverables</p><ul class="project-scope__tags" data-scope-deliverables></ul></div></div>
         <dl class="project-scope__credits" data-credits></dl>
@@ -104,6 +107,6 @@
 
     <footer class="footer dark-zone"><div class="footer__marquee" aria-hidden="true"><div class="footer__marquee-track"><div class="footer__marquee-group"><span>ENVIZON FILMS</span><span class="footer__marquee-dot">—</span><span>ENVIZON FILMS</span><span class="footer__marquee-dot">—</span></div><div class="footer__marquee-group"><span>ENVIZON FILMS</span><span class="footer__marquee-dot">—</span><span>ENVIZON FILMS</span><span class="footer__marquee-dot">—</span></div></div></div><div class="footer__grid"><div class="footer__nav"><a href="case-studies.html">Work</a><a href="services.html">Services</a><a href="journal.html">Journal</a></div><div class="footer__social"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a></div><address>Hyderabad<br>India<br><a href="mailto:hello@envizonfilms.com">Email us <i class="ph-light ph-arrow-up-right"></i></a></address><a class="btn-custom footer__cta" href="mailto:hello@envizonfilms.com"><span class="btn-custom__box"><span class="btn-custom__text">START A PROJECT</span></span><span class="btn-custom__icon"><i class="ph-light ph-arrow-up-right"></i></span></a></div><div class="footer__bottom mono"><span>©2026 Envizon Films</span><span>Privacy / Terms</span><button class="btn-custom btn-custom--icon-only" type="button" data-back-top aria-label="Back to top"><span class="btn-custom__icon"><i class="ph-light ph-arrow-up"></i></span></button></div></footer>
     <dialog data-showreel-dialog hidden><video data-reel-video></video><button type="button" data-showreel-close>Close</button></dialog>
-    <script src="assets/js/gsap.min.js" defer></script><script src="assets/js/ScrollTrigger.min.js" defer></script><script src="script.js" defer></script><script src="case-study.js" defer></script>
+    <script src="inner-pages.js" defer></script><script src="assets/js/gsap.min.js" defer></script><script src="assets/js/ScrollTrigger.min.js" defer></script><script src="script.js" defer></script><script src="case-study.js" defer></script>
   </body>
 </html>

@@ -1,0 +1,230 @@
+.legal-page {
+    background: var(--off-white);
+    color: var(--black);
+}
+.legal-hero {
+    min-height: 62svh;
+    padding: clamp(9rem, 16vh, 13rem) var(--pad) clamp(4rem, 7vw, 7rem);
+    color: #fff;
+    background: #080808;
+}
+.legal-hero__inner {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(0.8rem, 1.5vw, 1.5rem);
+    max-width: var(--container);
+    margin: auto;
+}
+.legal-hero__eyebrow {
+    grid-column: span 3;
+    margin: 0;
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    color: var(--envizon-yellow);
+}
+.legal-hero h1 {
+    grid-column: 4/-1;
+    max-width: 9ch;
+    margin: 0;
+    font-size: clamp(4.5rem, 10vw, 10rem);
+    line-height: 0.8;
+    font-weight: 400;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+}
+.legal-hero__meta {
+    grid-column: 4/-1;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: clamp(3rem, 6vw, 6rem);
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    font-size: 0.61rem;
+    text-transform: uppercase;
+}
+.legal-layout {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(0.8rem, 1.5vw, 1.5rem);
+    padding-top: clamp(6rem, 10vw, 10rem);
+    padding-bottom: clamp(7rem, 12vw, 12rem);
+}
+.legal-toc {
+    position: sticky;
+    top: 5rem;
+    grid-column: 1 / span 3;
+    align-self: start;
+}
+.legal-toc > p {
+    margin: 0 0 1rem;
+    font-size: 0.61rem;
+    text-transform: uppercase;
+    color: #777;
+}
+.legal-toc ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.legal-toc a {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.5rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+    color: inherit;
+    font: 0.62rem/1.25 var(--font-mono);
+    text-transform: uppercase;
+}
+.legal-toc a:hover {
+    color: #686f00;
+}
+.legal-content {
+    grid-column: 5 / span 6;
+}
+.legal-lead {
+    margin: 0 0 clamp(5rem, 8vw, 8rem);
+    font-size: clamp(2rem, 4vw, 4.8rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+.legal-section {
+    scroll-margin-top: 5rem;
+    padding: 0 0 clamp(4rem, 7vw, 7rem);
+    margin: 0 0 clamp(4rem, 7vw, 7rem);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.legal-section:last-child {
+    margin-bottom: 0;
+}
+.legal-section__number {
+    display: block;
+    margin-bottom: 1rem;
+    font: 0.62rem/1 var(--font-mono);
+    color: #777;
+}
+.legal-section h2 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2rem, 3.5vw, 4rem);
+    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: -0.045em;
+}
+.legal-section h3 {
+    margin: 2.5rem 0 0.8rem;
+    font-size: 1.15rem;
+}
+.legal-section p,
+.legal-section li {
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.7;
+}
+.legal-section ul {
+    padding-left: 1.1rem;
+}
+.legal-section a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+.legal-notice {
+    padding: 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    background: #fff;
+}
+.legal-contact {
+    padding: clamp(6rem, 10vw, 10rem) var(--pad);
+    color: #fff;
+    background: #080808;
+}
+.legal-contact__inner {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: var(--container);
+    margin: auto;
+}
+.legal-contact h2 {
+    grid-column: 1 / span 7;
+    margin: 0;
+    font-size: clamp(3.5rem, 7vw, 8rem);
+    line-height: 0.84;
+    font-weight: 400;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+}
+.legal-contact > div > div {
+    grid-column: 9/-1;
+    align-self: end;
+}
+.legal-contact p {
+    line-height: 1.5;
+    color: #bbb;
+}
+.error-page {
+    min-height: 100svh;
+    display: grid;
+    place-items: end start;
+    padding: clamp(7rem, 12vw, 12rem) var(--pad) 3rem;
+    color: #fff;
+    background: #080808
+        url("assets/images/case-still-moving-hyderabad-sunset.jpg") center/cover
+        no-repeat;
+    background-blend-mode: multiply;
+}
+.error-page__content p {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+}
+.error-page__content h1 {
+    margin: 0.5rem 0 2rem;
+    font-size: clamp(7rem, 25vw, 24rem);
+    line-height: 0.72;
+    font-weight: 400;
+    letter-spacing: -0.09em;
+}
+.error-page__links {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+.error-page__links a {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: inherit;
+    font: 0.62rem/1 var(--font-mono);
+    text-transform: uppercase;
+}
+.error-page__links a:first-child {
+    border-color: var(--envizon-yellow);
+    color: var(--envizon-yellow);
+}
+@media (max-width: 720px) {
+    .legal-hero__inner,
+    .legal-layout,
+    .legal-contact__inner {
+        display: block;
+    }
+    .legal-hero h1 {
+        margin-top: 2rem;
+    }
+    .legal-hero__meta {
+        display: block;
+        margin-top: 3rem;
+    }
+    .legal-hero__meta span {
+        display: block;
+        margin-top: 0.5rem;
+    }
+    .legal-toc {
+        position: static;
+        margin-bottom: 5rem;
+    }
+    .legal-content {
+        width: 100%;
+    }
+    .legal-contact h2 {
+        margin-bottom: 3rem;
+    }
+}
